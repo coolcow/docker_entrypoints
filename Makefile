@@ -4,6 +4,7 @@ NAMESPACE = farmcoolcow
 NAME = alpine_entrypoint
 INSTANCE = test
 DEPENDENCIES = alpine
+VERSION ?= latest
 
 # ---
 

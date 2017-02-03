@@ -7,6 +7,7 @@ MAINTAINER Jean-Michel Ruiz (coolcow) <mail@coolcow.org>
 ARG BUILD_DATE
 ARG VCS_REF
 ARG IMAGE_NAME
+ARG VERSION="latest"
 
 LABEL maintainer="Jean-Michel Ruiz (coolcow) <mail@coolcow.org>" \
       org.label-schema.build-date="$BUILD_DATE" \
@@ -18,7 +19,7 @@ LABEL maintainer="Jean-Michel Ruiz (coolcow) <mail@coolcow.org>" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/farmcoolcow/docker_entrypoints" \
       org.label-schema.vendor="coolcow.org" \
-      org.label-schema.version="alpine"
+      org.label-schema.version="$VERSION"
 
 
 # Install shadow (for usermod and groupmod) and su-exec
