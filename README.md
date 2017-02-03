@@ -1,11 +1,12 @@
 # farmcoolcow/entrypoints
 
-![](https://img.shields.io/badge/  alpine  -  latest  -lightgray.svg) ![](https://images.microbadger.com/badges/version/farmcoolcow/entrypoints.svg) ![](https://images.microbadger.com/badges/commit/farmcoolcow/entrypoints.svg) ![](https://images.microbadger.com/badges/image/farmcoolcow/entrypoints.svg) ![](https://images.microbadger.com/badges/license/farmcoolcow/entrypoints.svg)
+[![](https://img.shields.io/badge/  FROM  -  alpine  -lightgray.svg)](https://hub.docker.com/_/alpine) ![](https://images.microbadger.com/badges/commit/farmcoolcow/entrypoints.svg) ![](https://images.microbadger.com/badges/image/farmcoolcow/entrypoints.svg) ![](https://images.microbadger.com/badges/license/farmcoolcow/entrypoints.svg)
+
 ---
 
 ## What is this image for ?
 
-This is a base image based on [alpine:latest](https://hub.docker.com/_/alpine/) that bundles some useful entrypoint scripts.
+This is a base image based on [alpine](https://hub.docker.com/_/alpine/) that bundles some useful entrypoint scripts.
 
 --- 
 
@@ -33,4 +34,5 @@ This is a base image based on [alpine:latest](https://hub.docker.com/_/alpine/) 
   Finally executes **```crond```** with the given parameters.
   > see [farmcoolcow/rclone-cron](https://hub.docker.com/r/farmcoolcow/rclone-cron) to see this entryoint in action.
   
+
 
