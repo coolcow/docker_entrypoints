@@ -1,12 +1,6 @@
 # https://gist.github.com/coolcow/213653bef387855349593dcd16923637
 
-NAMESPACE = farmcoolcow
-NAME = entrypoints
-INSTANCE = test
-DEPENDENCIES = alpine
-VERSION ?= latest
-
-# ---
+include make.env
 
 IMAGE_NAME = $(NAMESPACE)/$(NAME)
 
