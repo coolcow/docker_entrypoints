@@ -1,9 +1,6 @@
 # farmcoolcow/entrypoints
 
-[![](https://img.shields.io/badge/  FROM  -  alpine  -lightgray.svg)](https://hub.docker.com/_/alpine) 
-[![](https://images.microbadger.com/badges/commit/farmcoolcow/entrypoints.svg)](https://github.com/coolcow/docker_entrypoints/commits/master) 
-[![](https://images.microbadger.com/badges/image/farmcoolcow/entrypoints.svg)](https://microbadger.com/images/farmcoolcow/entrypoints) 
-[![](https://images.microbadger.com/badges/license/farmcoolcow/entrypoints.svg)](https://raw.githubusercontent.com/coolcow/docker_entrypoints/master/LICENSE.txt)
+[![](https://img.shields.io/badge/  FROM  -  alpine  -lightgray.svg)](https://hub.docker.com/_/alpine) [![](https://images.microbadger.com/badges/commit/farmcoolcow/entrypoints.svg)](https://github.com/coolcow/docker_entrypoints/commits/master) [![](https://images.microbadger.com/badges/image/farmcoolcow/entrypoints.svg)](https://microbadger.com/images/farmcoolcow/entrypoints) [![](https://images.microbadger.com/badges/license/farmcoolcow/entrypoints.svg)](https://raw.githubusercontent.com/coolcow/docker_entrypoints/master/LICENSE.txt)
 
 ---
 
