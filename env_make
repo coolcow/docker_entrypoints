@@ -1,0 +1,7 @@
+NAMESPACE = farmcoolcow
+NAME = entrypoints
+INSTANCE = test
+DEPENDENCIES = alpine
+VERSION ?= latest
+ENVIRONMENTS = 
+VOLUMES = 
