@@ -2,9 +2,9 @@ FROM alpine
 
 ENV LABEL_MAINTAINER="Jean-Michel Ruiz (coolcow) <mail@coolcow.org>" \
     LABEL_VENDOR="coolcow.org" \
-    LABEL_IMAGE_NAME="farmcoolcow/entrypoints" \
-    LABEL_URL="https://hub.docker.com/r/farmcoolcow/entrypoints/" \
-    LABEL_VCS_URL="https://github.com/farmcoolcow/docker_entrypoints" \
+    LABEL_IMAGE_NAME="ghcr.io/coolcow/entrypoints" \
+    LABEL_URL="https://ghcr.io/coolcow/entrypoints" \
+    LABEL_VCS_URL="https://github.com/coolcow/docker_entrypoints" \
     LABEL_DESCRIPTION="Docker base image with su-exec and crond entrypoint scripts, based on alpine." \
     LABEL_LICENSE="GPL-3.0"
 
@@ -42,4 +42,5 @@ LABEL maintainer=$LABEL_MAINTAINER \
       org.label-schema.vcs-url=$LABEL_VCS_URL \
       org.label-schema.vendor=$LABEL_VENDOR \
       org.label-schema.version=$LABEL_VERSION
+
 

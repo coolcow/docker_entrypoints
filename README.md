@@ -1,38 +1,8 @@
-# farmcoolcow/entrypoints
+# ghcr.io/coolcow/entrypoints
 
-[![](https://img.shields.io/badge/  FROM  -  alpine  -lightgray.svg)](https://hub.docker.com/_/alpine) [![](https://images.microbadger.com/badges/commit/farmcoolcow/entrypoints.svg)](https://github.com/coolcow/docker_entrypoints/commits/master) [![](https://images.microbadger.com/badges/image/farmcoolcow/entrypoints.svg)](https://microbadger.com/images/farmcoolcow/entrypoints) [![](https://images.microbadger.com/badges/license/farmcoolcow/entrypoints.svg)](https://raw.githubusercontent.com/coolcow/docker_entrypoints/master/LICENSE.txt)
+This repository provides a minimal Alpine-based (`alpine:latest`) base image that bundles a few lightweight entrypoint scripts:
+This image is intended to be used as a base image for other Docker images so the bundled entrypoint scripts can be reused and setup logic is not duplicated.
 
----
-
-## What is this image for ?
-
-This is a base image based on [alpine](https://hub.docker.com/_/alpine/) that bundles some useful entrypoint scripts.
-
---- 
-
-* [/create_user_group_home.sh](https://github.com/coolcow/docker_entrypoints/blob/master/create_user_group_home.sh) [user] [group] [home]  
-
-  Creates an **user** a **group** and a **home** directory.  
-  The group and the home directory are assigned to the user, as well as ```/bin/sh``` as the default **shell**.  
-  If the environment variable ```PUID``` is set, the user is created with this id. Otherwise the user id is set to ```1000```.  
-  If the environment variable ```PGID``` is set, the group is created with this id. Otherwise the group id is set to ```1000```.  
-  
----
-
-* [/entrypoint_su-exec.sh](https://github.com/coolcow/docker_entrypoints/blob/master/entrypoint_su-exec.sh) [command] [params...]  
-
-  First creates an user, group and home directory, by executing **```/create_user_group_home.sh```** with the parameters ```$ENTRYPOINT_USER``` ```$ENTRYPOINT_GROUP``` ```$ENTRYPOINT_HOME```.  
-  Then uses **```su-exec```** to exec ```$ENTRYPOINT_COMMAND``` with the given parameters as the user ```$ENTRYPOINT_USER```.
-  > see [farmcoolcow/rclone](https://hub.docker.com/r/farmcoolcow/rclone) to see this entryoint in action.
-  
----
-
-* [/entrypoint_crond.sh](https://github.com/coolcow/docker_entrypoints/blob/master/entrypoint_crond.sh) [params...]  
-
-  First creates an user, group and home directory, by executing **```/create_user_group_home.sh```** with the parameters ```$ENTRYPOINT_USER``` ```$ENTRYPOINT_GROUP``` ```$ENTRYPOINT_HOME```.   
-  Then sets the crontab file ```$CROND_CRONTAB``` as the crontab of the user ```$ENTRYPOINT_USER```.   
-  Finally executes **```crond```** with the given parameters.
-  > see [farmcoolcow/rclone-cron](https://hub.docker.com/r/farmcoolcow/rclone-cron) to see this entryoint in action.
-  
-
-
+* [`create_user_group_home.sh`](build/create_user_group_home.sh): creates a user, group and home directory. Honors `PUID`/`PGID` if provided.
+* [`entrypoint_su-exec.sh`](build/entrypoint_su-exec.sh): creates the user/group/home then executes a command as that user via `su-exec`.
+* [`entrypoint_crond.sh`](build/entrypoint_crond.sh): creates the user/group/home, installs a crontab and runs `crond`.
