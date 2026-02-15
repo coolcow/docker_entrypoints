@@ -4,7 +4,7 @@ ENV LABEL_MAINTAINER="Jean-Michel Ruiz (coolcow) <mail@coolcow.org>" \
     LABEL_VENDOR="coolcow.org" \
     LABEL_IMAGE_NAME="ghcr.io/coolcow/entrypoints" \
     LABEL_URL="https://ghcr.io/coolcow/entrypoints" \
-    LABEL_VCS_URL="https://github.com/coolcow/docker_entrypoints" \
+    LABEL_VCS_URL="https://github.com/coolcow/docker-entrypoints" \
     LABEL_DESCRIPTION="Docker base image with su-exec and crond entrypoint scripts, based on alpine." \
     LABEL_LICENSE="GPL-3.0"
 
