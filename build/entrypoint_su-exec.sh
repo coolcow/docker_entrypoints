@@ -5,13 +5,10 @@ shift
 ENTRYPOINT_PARAMS=$@
 
 # create user group and home
-/create_user_group_home.sh \
-  $ENTRYPOINT_USER \
-  $ENTRYPOINT_GROUP \
-  $ENTRYPOINT_HOME
+/ensure_user_group_home.sh
 
 # exec ENTRYPOINT_COMMAND as user
 su-exec \
-  $ENTRYPOINT_USER \
+  $TARGET_USER \
   $ENTRYPOINT_COMMAND \
   $ENTRYPOINT_PARAMS

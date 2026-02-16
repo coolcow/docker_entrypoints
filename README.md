@@ -18,11 +18,11 @@ FROM ghcr.io/coolcow/entrypoints:v1.1.0 AS entrypoints
 FROM node:20-alpine # Or any other base image like alpine, ubuntu, python, etc.
 
 # Copy the desired scripts from the asset stage
-COPY --from=entrypoints /assets/create_user_group_home.sh /usr/local/bin/create_user_group_home.sh
+COPY --from=entrypoints /assets/ensure_user_group_home.sh /usr/local/bin/ensure_user_group_home.sh
 COPY --from=entrypoints /assets/entrypoint_su-exec.sh /usr/local/bin/entrypoint_su-exec.sh
 
 # Make the scripts executable
-RUN chmod +x /usr/local/bin/create_user_group_home.sh \
+RUN chmod +x /usr/local/bin/ensure_user_group_home.sh \
            /usr/local/bin/entrypoint_su-exec.sh
 
 # Set the entrypoint for your application (e.g., using su-exec)
@@ -39,9 +39,9 @@ ENTRYPOINT ["entrypoint_su-exec.sh"]
 
 The `coolcow/entrypoints` asset image provides the following scripts, located in the `/assets/` directory within the image:
 
-*   [`/assets/create_user_group_home.sh`](build/create_user_group_home.sh): Creates a user, group, and home directory. Honors `PUID`/`PGID` if provided.
-*   [`/assets/entrypoint_su-exec.sh`](build/entrypoint_su-exec.sh): Creates the user/group/home then executes a command as that user via `su-exec`.
-*   [`/assets/entrypoint_crond.sh`](build/entrypoint_crond.sh): Creates the user/group/home, installs a crontab, and runs `crond`.
+*   [`/assets/ensure_user_group_home.sh`](build/ensure_user_group_home.sh): Creates/updates a user, group, and home directory using environment variables only. Defaults: `TARGET_USER=target`, `TARGET_GROUP=target`, `TARGET_HOME=/home/target`, `TARGET_UID=1000`, `TARGET_GID=1000`, `TARGET_SHELL=/bin/sh` (set empty to skip shell updates), `TARGET_REMAP_IDS=1` (set `0` to disable remapping of conflicting UID/GID entries).
+*   [`/assets/entrypoint_su-exec.sh`](build/entrypoint_su-exec.sh): Calls `ensure_user_group_home.sh` and executes a command as `TARGET_USER` via `su-exec`.
+*   [`/assets/entrypoint_crond.sh`](build/entrypoint_crond.sh): Calls `ensure_user_group_home.sh`, installs a crontab for `TARGET_USER`, and runs `crond`.
 
 ## Building and Testing
 

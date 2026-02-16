@@ -5,7 +5,7 @@
 FROM scratch
 
 # Copy scripts to a dedicated assets directory
-COPY create_user_group_home.sh \
+COPY ensure_user_group_home.sh \
      entrypoint_su-exec.sh \
      entrypoint_crond.sh \
      /assets/
