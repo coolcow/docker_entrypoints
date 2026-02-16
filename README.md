@@ -63,7 +63,7 @@ This project uses GitHub Actions to build, test, and publish the asset image. Fo
     ```
 2.  **Run the smoke tests:**
     ```bash
-    docker build --build-arg ASSET_IMAGE=ghcr.io/coolcow/entrypoints:local-test-build -f build/Dockerfile.test build
+    docker build --build-arg APP_IMAGE=ghcr.io/coolcow/entrypoints:local-test-build -f build/Dockerfile.test build
     ```
 
 *   The `Dockerfile` (`build/Dockerfile`) defines the `FROM scratch` asset image.

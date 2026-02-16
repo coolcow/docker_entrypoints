@@ -2,9 +2,10 @@
 # It uses a multi-stage build to verify the contents of the asset image.
 
 # The asset image to be tested is passed as a build argument.
-ARG ASSET_IMAGE=ghcr.io/coolcow/entrypoints:local-test-build
+# In CI this is provided by the reusable workflow as APP_IMAGE.
+ARG APP_IMAGE=entrypoints:local-test-build
 # Stage 1: The image to be tested
-FROM ${ASSET_IMAGE} AS assets_to_test
+FROM ${APP_IMAGE} AS assets_to_test
 
 # Stage 2: A testing environment
 FROM alpine:latest
