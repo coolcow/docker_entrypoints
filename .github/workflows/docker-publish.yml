@@ -9,7 +9,7 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: coolcow/workflows/.github/workflows/build-and-publish.yml@v1.0.0
+    uses: coolcow/workflows/build-and-publish.yml@v1.0.0
     with:
       image_name: 'entrypoints'
       build_context: 'build'
