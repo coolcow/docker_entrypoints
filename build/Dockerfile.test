@@ -1,0 +1,31 @@
+# This Dockerfile is for testing the asset image.
+# It uses a multi-stage build to verify the contents of the asset image.
+
+# The asset image to be tested is passed as a build argument.
+ARG ASSET_IMAGE=ghcr.io/coolcow/entrypoints:latest
+# Stage 1: The image to be tested
+FROM ${ASSET_IMAGE} AS assets_to_test
+
+# Stage 2: A testing environment
+FROM alpine:latest
+
+# Copy the files from the image-under-test into the test environment
+COPY --from=assets_to_test /assets/ /testdata/
+
+# Run tests
+# If any of these commands fail, the build will fail.
+RUN \
+    # Test 1: Check if all expected files exist
+    test -f /testdata/create_user_group_home.sh && \
+    test -f /testdata/entrypoint_crond.sh && \
+    test -f /testdata/entrypoint_su-exec.sh && \
+    \
+    # Test 2: Check if files are not empty
+    test -s /testdata/create_user_group_home.sh && \
+    test -s /testdata/entrypoint_crond.sh && \
+    test -s /testdata/entrypoint_su-exec.sh && \
+    \
+    # Test 3: Check for expected content (e.g., shebang or a key command)
+    grep -q "/bin/sh" /testdata/create_user_group_home.sh && \
+    grep -q "crond" /testdata/entrypoint_crond.sh && \
+    grep -q "su-exec" /testdata/entrypoint_su-exec.sh

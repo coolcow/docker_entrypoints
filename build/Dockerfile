@@ -1,30 +1,23 @@
-FROM alpine
+# This Dockerfile builds a minimal, OS-less "asset image" FROM scratch.
+# It contains common entrypoint scripts that can be copied into other images
+# using multi-stage builds (`COPY --from=...`).
 
+FROM scratch
+
+# Copy scripts to a dedicated assets directory
+COPY create_user_group_home.sh \
+     entrypoint_su-exec.sh \
+     entrypoint_crond.sh \
+     /assets/
+
+# Metadata labels describing the image
 ENV LABEL_MAINTAINER="Jean-Michel Ruiz (coolcow) <mail@coolcow.org>" \
     LABEL_VENDOR="coolcow.org" \
     LABEL_IMAGE_NAME="ghcr.io/coolcow/entrypoints" \
     LABEL_URL="https://ghcr.io/coolcow/entrypoints" \
     LABEL_VCS_URL="https://github.com/coolcow/docker-entrypoints" \
-    LABEL_DESCRIPTION="Docker base image with su-exec and crond entrypoint scripts, based on alpine." \
+    LABEL_DESCRIPTION="Minimal asset image containing common entrypoint scripts for coolcow projects." \
     LABEL_LICENSE="GPL-3.0"
-
-# Install shadow (for usermod and groupmod) and su-exec
-
-RUN apk --no-cache --update add \
-      shadow \
-      su-exec
-
-COPY create_user_group_home.sh \
-     entrypoint_su-exec.sh \
-     entrypoint_crond.sh \
-     /
-
-RUN chmod +x \
-      /create_user_group_home.sh \
-      /entrypoint_su-exec.sh \
-      /entrypoint_crond.sh
-
-#
 
 ARG LABEL_VERSION="latest"
 ARG LABEL_BUILD_DATE
